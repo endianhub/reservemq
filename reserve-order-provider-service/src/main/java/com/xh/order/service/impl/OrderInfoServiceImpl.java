@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.xh.order.dao.rep.OrderInfoRepDao;
 import com.xh.order.entity.OrderInfo;
 import com.xh.order.service.OrderInfoService;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,11 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     public List<OrderInfo> findAll() {
 
         return orderRepDao.findAll();
+    }
+
+    @Override
+    public void pay() {
+        String message = "100001";
+        jmsTemplate.convertAndSend(new ActiveMQQueue("active.pay.queue.msg"), message);
     }
 }

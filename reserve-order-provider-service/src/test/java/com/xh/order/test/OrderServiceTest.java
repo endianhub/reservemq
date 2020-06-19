@@ -39,10 +39,12 @@ public class OrderServiceTest {
         order.setMonetary(30.4);
         order.setCreateTime(new Date());
 
-        orderService.add(order);
+//        orderService.add(order);
+
+        orderService.pay();
     }
 
-    @Test
+//    @Test
     public void findAll() {
         List<OrderInfo> list = orderService.findAll();
         System.out.println(list.size());

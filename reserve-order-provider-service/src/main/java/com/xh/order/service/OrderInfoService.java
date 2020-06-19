@@ -17,4 +17,6 @@ public interface OrderInfoService {
     void add(OrderInfo order);
 
     List<OrderInfo> findAll();
+
+    void pay();
 }
